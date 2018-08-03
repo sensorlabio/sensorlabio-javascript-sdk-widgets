@@ -1,5 +1,5 @@
-import SensorlabApiWidgets from './widgets/widgets';
+import SensorlabWidgets from './widgets/widgets';
 
-console.log(SensorlabApiWidgets);
-
-exports = SensorlabApiWidgets;
+exports = {
+    'SensorlabWidgets': SensorlabWidgets
+};
