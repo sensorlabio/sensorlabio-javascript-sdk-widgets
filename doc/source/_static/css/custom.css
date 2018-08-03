@@ -1,0 +1,462 @@
+/*------------- #VARIABLES --------------*/
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,700,900,900i");
+/*------------- #Main Styles --------------*/
+body {
+	background: #fff;
+	color: #2b2c2d;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 1.6;
+}
+
+h1, .h1 {
+	font-weight: 700;
+	color: #414042;
+	font-family: "Poppins", Arial, "Helvetica Neue", Helvetica, sans-serif;
+	margin: .5em 0;
+	line-height: 1em;
+	letter-spacing: 0.02em;
+}
+
+h1 a, .h1 a {
+	color: inherit;
+}
+
+h2, .h2 {
+	margin: .5em 0;
+	line-height: 1.3em;
+	font-weight: 700;
+	color: #414042;
+	font-family: "Poppins", Arial, "Helvetica Neue", Helvetica, sans-serif;
+	letter-spacing: 0.02em;
+}
+
+h2 a, .h2 a {
+	color: inherit;
+}
+
+h3, .h3 {
+	margin: .5em 0;
+	line-height: 1.3em;
+	font-weight: 700;
+	color: #414042;
+	font-family: "Poppins", Arial, "Helvetica Neue", Helvetica, sans-serif;
+	letter-spacing: 0.02em;
+}
+
+h3 a, .h3 a {
+	color: inherit;
+}
+
+h4, .h4 {
+	margin: .5em 0;
+	line-height: 1.3em;
+	font-weight: 700;
+	color: #414042;
+	font-family: "Poppins", Arial, "Helvetica Neue", Helvetica, sans-serif;
+	letter-spacing: 0.02em;
+}
+
+h4 a, .h4 a {
+	color: inherit;
+}
+
+h5, .h5 {
+	margin: .5em 0;
+	line-height: 1.3em;
+	font-weight: 700;
+	color: #414042;
+	font-family: "Poppins", Arial, "Helvetica Neue", Helvetica, sans-serif;
+	letter-spacing: 0.02em;
+}
+
+h5 a, .h5 a {
+	color: inherit;
+}
+
+h6, .h6 {
+	margin: .5em 0;
+	line-height: 1.3em;
+	font-weight: 700;
+	color: #414042;
+	font-family: "Poppins", Arial, "Helvetica Neue", Helvetica, sans-serif;
+	letter-spacing: 0.02em;
+}
+
+h6 a, .h6 a {
+	color: inherit;
+}
+
+a {
+	text-decoration: none;
+	color: #121228;
+	-webkit-transition: all 0.15s;
+	transition: all 0.15s linear;
+}
+
+a:hover {
+	color: #ff9000;
+}
+
+a:visited {
+	color: #7e3b9a;
+}
+
+p {
+	font-size: 16px;
+}
+
+@media (max-width: 600px) {
+	p {
+		font-size: 14px;
+	}
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+strong {
+	color: #414042;
+}
+
+b, strong {
+	font-weight: 600;
+	font-family: 'Poppins';
+}
+
+/*------------- #Custom Styles --------------*/
+.rst-content .toctree-wrapper ul {
+	list-style: none;
+}
+
+.rst-content .toctree-wrapper ul ul {
+	margin: 10px 0 10px 20px;
+}
+
+.rst-content .toctree-wrapper ul li {
+	list-style: none;
+	margin-left: 0;
+	margin-bottom: 10px;
+}
+
+.rst-content .toctree-wrapper ul li ul {
+	margin: 10px 0 10px 20px;
+}
+
+.rst-content .toctree-wrapper ul li > a {
+	padding-left: 15px;
+	position: relative;
+}
+
+.rst-content .toctree-wrapper ul li > a:before {
+	content: '';
+	display: block;
+	position: absolute;
+	left: 0;
+	bottom: 8px;
+	width: 5px;
+	height: 5px;
+	-webkit-border-radius: 100%;
+	border-radius: 100%;
+	background-color: #d2def0;
+	border: none;
+	overflow: hidden;
+}
+
+.rst-content .toctree-wrapper ul li ul li > a:before {
+	background-color: #414042;
+}
+
+.rst-content .toctree-wrapper ul li ul ul li > a:before {
+	background-color: #f09b86;
+}
+
+.rst-content .toctree-wrapper ul li li li {
+	list-style: none;
+}
+
+.rst-content .toctree-wrapper ul li li {
+	list-style: none;
+}
+
+.wy-side-nav-search {
+	background-color: #d2def0;
+	border-bottom: 1px solid #d2def0;
+	margin-bottom: 0;
+}
+
+.wy-side-nav-search a:hover {
+	color: #414042;
+	background: rgba(255, 255, 255, 0.3);
+}
+
+.wy-side-nav-search > div.version {
+	color: #414042;
+}
+
+.wy-nav-side {
+	background: #727286;
+}
+
+.wy-nav-content {
+	max-width: 100%;
+}
+
+.wy-menu-vertical p.caption {
+	color: #fff;
+}
+
+.wy-menu-vertical a {
+	font-size: 14px;
+	line-height: 1.5;
+	background-color: #fff;
+	color: #414042;
+}
+
+.wy-menu-vertical a:hover {
+	background-color: #d2def0;
+	color: #414042;
+}
+
+.btn {
+	cursor: pointer;
+	display: inline-block;
+	text-decoration: none;
+	padding: 10px 25px;
+	font-size: 14px;
+	text-transform: uppercase;
+	color: #fff;
+	font-weight: 600;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+	position: relative;
+	-webkit-transition: all .3s ease;
+	transition: all .3s ease;
+	text-align: center;
+	line-height: 1;
+	-webkit-box-shadow: 10px 0 30px 0 rgba(210, 222, 240, 0);
+	box-shadow: 10px 0 30px 0 rgba(210, 222, 240, 0);
+	border: none;
+}
+
+.btn:active, .btn:focus {
+	-webkit-box-shadow: 10px 0 30px 0 rgba(210, 222, 240, 0.6);
+	box-shadow: 10px 0 30px 0 rgba(210, 222, 240, 0.6);
+	padding: 10px 25px;
+}
+
+.btn-neutral {
+	background-color: #d2def0 !important;
+	color: #fff !important;
+}
+
+.btn-neutral:hover {
+	background-color: #d2def0 !important;
+	color: #fff;
+	-webkit-box-shadow: 10px 0 30px 0 rgba(33, 33, 33, 0.22);
+	box-shadow: 10px 0 30px 0 rgba(33, 33, 33, 0.22);
+}
+
+.wy-breadcrumbs li.wy-breadcrumbs-aside a {
+	color: #27AE60;
+}
+
+.wy-breadcrumbs li.wy-breadcrumbs-aside a:hover {
+	color: #414042;
+}
+
+.wy-menu-vertical li.current {
+	background: #f7fcff;
+}
+
+nav.wy-nav-side {
+	border-right: 1px solid #d2def0;
+}
+
+.wy-menu-vertical li.toctree-l1.current > a {
+	border-bottom: solid 1px #d2def0;
+	border-top: solid 1px #d2def0;
+}
+
+.wy-menu-vertical li.current > a {
+	background-color: #d2def0;
+}
+
+.wy-menu-vertical li.current ul {
+	margin: 0;
+}
+
+.wy-menu-vertical li.current a:hover {
+	background: #fff;
+}
+
+.wy-menu-vertical li.current a {
+	color: #0e0e15;
+}
+
+.wy-menu-vertical a:hover span.toctree-expand {
+	color: #414042;
+}
+
+.wy-menu-vertical li span.toctree-expand {
+	color: #d2def0;
+}
+
+.wy-side-nav-search input[type="text"] {
+	border-color: #dbe3ec;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	outline: none;
+}
+
+.wy-menu-vertical li.toctree-l2.current > a,
+.wy-menu-vertical li.toctree-l2.current li.toctree-l3 > a {
+	background-color: #d2def0;
+}
+
+.rst-content dl:not(.docutils) dt {
+	padding: 5px 30px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	background: #f0f7fd;
+	color: #414042;
+	border-top: solid 3px #d2def0;
+	font-size: 100%;
+}
+
+.rst-content dl:not(.docutils) dt > em {
+	font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+}
+
+.rst-content div[class^="highlight"] div[class^="highlight"] {
+	background-color: #fff;
+}
+
+.rst-content .admonition {
+	background-color: #f0f7fd;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.rst-content .admonition .admonition-title {
+	background-color: #d2def0;
+	-webkit-border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 0 0;
+}
+
+.rst-content dl:not(.docutils) dl dt {
+	border-left: solid 3px #d2def0;
+	background: rgba(210, 222, 240, 0.1);
+}
+
+.rst-versions {
+	background-color: #727286;
+}
+
+.rst-versions .rst-other-versions {
+	color: #fff;
+}
+
+.rst-versions .rst-other-versions hr {
+	border-top: solid 1px rgba(255, 255, 255, 0.6);
+}
+
+.rst-versions a {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.rst-versions a:hover {
+	color: white;
+}
+
+.highlight .nt {
+	color: #f05d16;
+}
+
+.highlight .s2 {
+	color: #414042;
+}
+
+.rst-versions .rst-current-version {
+	background-color: #fff;
+	line-height: 1;
+}
+
+.rst-content div[class^="highlight"] {
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #8bc5ec;
+}
+
+.rst-content div[class^="highlight"] pre {
+	color: #f05d16;
+}
+
+.wy-side-nav-search > a {
+	padding: 7px 15px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	color: #414042;
+}
+
+.rst-content table.field-list .field-name {
+	color: #414042;
+	font-weight: 600;
+}
+
+.rst-versions .rst-current-version .fa-book,
+.rst-versions .rst-current-version .fa {
+	color: #414042;
+}
+
+.rst-versions .rst-other-versions dd a {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.rst-versions .rst-other-versions dd a:hover {
+	color: white;
+}
+
+.rst-content .sidebar .sidebar-title {
+	background-color: #d2def0;
+	color: #fff;
+}
+
+.wy-menu-vertical li.current > a span.toctree-expand,
+.wy-menu-vertical li a span.toctree-expand {
+	top: 2px;
+	position: relative;
+}
+
+.wy-menu-vertical li a span.toctree-expand {
+	color: inherit;
+}
+
+footer {
+	color: inherit;
+}
+
+footer a {
+	color: #EF6517;
+}
+
+footer span.commit code {
+	color: #f05d16;
+}
+
+/*------------- Responsive Mode --------------*/
+.wy-nav-top {
+	background-color: #d2def0;
+}
+
+.wy-nav-top i {
+	padding-top: 9px;
+}
+
+.wy-nav-top a:hover {
+	color: #414042;
+}

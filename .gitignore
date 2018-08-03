@@ -57,3 +57,5 @@ typings/
 
 #ignore jsdoc
 out/
+
+example/
