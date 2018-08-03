@@ -57,7 +57,7 @@ module.exports = {
     // CRL: Updated whole block with library specific info
     path: paths.appBuild,
     filename: 'index.min.js',
-    library: 'SensorlabSDK',
+    library: 'SensorlabWidgets',
     libraryTarget: 'umd'
   },
   resolve: {
