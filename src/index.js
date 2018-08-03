@@ -1,5 +1,5 @@
 import SensorlabWidgets from './widgets/widgets';
 
-exports = {
+module.exports = {
     'SensorlabWidgets': SensorlabWidgets
 };
