@@ -9,7 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=source
 set BUILDDIR=build
-set SPHINXPROJ=SensorlabioJavascriptSDK
+set SPHINXPROJ=SensorlabioJavascriptSDKWidgets
 
 if "%1" == "" goto help
 
