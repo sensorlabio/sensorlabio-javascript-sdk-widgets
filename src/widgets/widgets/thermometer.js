@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ThermometerWidgetComponent from '../../components/ThermometerWidgetComponent';
 
+import "react-thermometer-component/build/css/index.css";
+
 /**
  * Thermometer widget.
  */

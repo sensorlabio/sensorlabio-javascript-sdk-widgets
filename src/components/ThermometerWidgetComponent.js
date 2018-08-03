@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Thermometer from 'react-thermometer-component'
+import Thermometer from 'react-thermometer-component';
+
 import "react-thermometer-component/build/css/index.css";
 
 export default class ThermometerWidgetComponent extends Component {
