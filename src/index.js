@@ -1,3 +1,3 @@
-import Widgets from './widgets/widgets';
+import SensorlabWidgets from './widgets/widgets';
 
-module.export = Widgets;
+module.export = SensorlabWidgets;
