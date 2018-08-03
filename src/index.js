@@ -1,3 +1,5 @@
 import SensorlabWidgets from './widgets/widgets';
 
-module.exports = SensorlabWidgets;
+console.log(SensorlabWidgets);
+
+exports = SensorlabWidgets;
