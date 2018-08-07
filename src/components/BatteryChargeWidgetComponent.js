@@ -41,7 +41,7 @@ export default class BatteryChargeWidgetComponent extends Component {
 
     updateWidget() {
         let params = {
-            sensor_id: this.props.sensor_id,
+            sensor: this.props.sensor_id,
             type: 'CHRG',
         }
         this.api.measurements.last(params).then((measurement) => {

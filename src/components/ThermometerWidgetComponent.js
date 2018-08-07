@@ -32,7 +32,7 @@ export default class ThermometerWidgetComponent extends Component {
 
     updateWidget() {
         let params = {
-            sensor_id: this.props.sensor_id,
+            sensor: this.props.sensor_id,
             type: 'TMP',
         }
         this.promise = this.api.measurements.last(params).then((measurement) => {

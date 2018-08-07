@@ -34,7 +34,7 @@ export default class TemperatureChartWidgetComponent extends Component {
 
     updateWidget() {
         let params = {
-            sensor_id: this.props.sensor_id,
+            sensor: this.props.sensor_id,
             type: 'TMP',
         }
         this.api.measurements.list(params).then((measurements_response) => {

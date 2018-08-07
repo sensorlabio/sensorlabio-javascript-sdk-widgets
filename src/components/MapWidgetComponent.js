@@ -54,7 +54,7 @@ export default class MapWidgetComponent extends Component {
 
     updateWidget() {
         let params = {
-            sensor_id: this.props.sensor_id,
+            sensor: this.props.sensor_id,
             type: 'LOC',
         }
         this.api.measurements.last(params).then((measurement) => {
