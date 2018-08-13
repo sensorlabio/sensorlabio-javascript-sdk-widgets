@@ -35,13 +35,23 @@ export default class ThermometerWidgetComponent extends Component {
             sensor: this.props.sensor_id,
             type: 'TMP',
         }
-        this.promise = this.api.measurements.last(params).then((measurement) => {
-            if (!this.is_live) return;
-            this.setState({'temperature': measurement.value});
-            this.timer = setTimeout(() => {
-                this.updateWidget();
-            }, 1000);
-        });
+        if (this.props.is_public) {
+            this.promise = this.api.public.last(this.props.public_api_key, params).then((measurement) => {
+                if (!this.is_live) return;
+                this.setState({'temperature': measurement.value});
+                this.timer = setTimeout(() => {
+                    this.updateWidget();
+                }, 1000);
+            });
+        } else {
+            this.promise = this.api.measurements.last(params).then((measurement) => {
+                if (!this.is_live) return;
+                this.setState({'temperature': measurement.value});
+                this.timer = setTimeout(() => {
+                    this.updateWidget();
+                }, 1000);
+            });
+        }
     }
 
     stopWidget() {
