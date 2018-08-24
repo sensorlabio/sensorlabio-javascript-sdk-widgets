@@ -56,9 +56,8 @@ export default class MapWidgetComponent extends Component {
         let params = {
             sensor: this.props.sensor_id,
             type: 'LOC',
-        }
+        };
         this.api.measurements.last(params).then((measurement) => {
-            if (!this.is_live) return;
             this.setState((prevState) => {
                 let _new_location_history = prevState.location_history.slice();
                 _new_location_history.push({lat: measurement.value[0], lng: measurement.value[1]});
@@ -68,17 +67,11 @@ export default class MapWidgetComponent extends Component {
                 let newState = {location: measurement.value, location_history: _new_location_history};
                 return newState;
             });
-            this.timer = setTimeout(() => {
-                this.updateWidget()
-            }, 1000);
         });
     }
 
     stopWidget() {
         this.is_live = false;
-        if (this.timer) {
-            clearTimeout(this.timer);
-        }
     }
 
     getCenter() {

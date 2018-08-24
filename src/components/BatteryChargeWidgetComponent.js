@@ -12,8 +12,11 @@ export default class BatteryChargeWidgetComponent extends Component {
             charge: 100,
         };
 
-        this.timer = null;
+        this.ws = this.props.ws;
+        //this.timer = null;
         this.is_live = false;
+
+        this.getMeasurements = this.getMeasurements.bind(this);
     }
 
     componentWillMount() {
@@ -36,7 +39,15 @@ export default class BatteryChargeWidgetComponent extends Component {
 
     startWidget() {
         this.is_live = true;
+
+        this.ws.onMeasurementsType('CHRG', this.getMeasurements);
+
         this.updateWidget();
+    }
+
+    getMeasurements(measurements) {
+        let measurement = measurements[0];
+        this.setState({'charge': measurement.value[0]});
     }
 
     updateWidget() {
@@ -47,17 +58,21 @@ export default class BatteryChargeWidgetComponent extends Component {
         this.api.measurements.last(params).then((measurement) => {
             if (!this.is_live) return;
             this.setState({'charge': measurement.value});
+            /*
             this.timer = setTimeout(() => {
                 this.updateWidget()
             }, 1000);
+            */
         });
     }
 
     stopWidget() {
         this.is_live = false;
+        /*
         if (this.timer) {
             clearTimeout(this.timer);
         }
+        */
     }
 
     render() {

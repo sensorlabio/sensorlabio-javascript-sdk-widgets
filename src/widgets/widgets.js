@@ -15,7 +15,7 @@ export default class Widgets {
      *
      * @param api SensorlabApi
      */
-    constructor(api) {
+    constructor(api, ws) {
         /**
          * API.
          *
@@ -25,12 +25,20 @@ export default class Widgets {
         this.api = api;
 
         /**
+         * Websocket.
+         *
+         * @member Widgets#ws
+         * @type {SensorlabWebsocket}
+         */
+        this.ws = ws;
+
+        /**
          * Thermometer widget.
          *
          * @member Widgets#thermometer
          * @type {ThermometerWidget}
          */
-        this.thermometer = new ThermometerWidget(this.api);
+        this.thermometer = new ThermometerWidget(this.api, this.ws);
 
         /**
          * Temperature chart widget.
@@ -38,7 +46,7 @@ export default class Widgets {
          * @member Widgets#temperature_chart
          * @type {TemperatureChartWidget}
          */
-        this.temperature_chart = new TemperatureChartWidget(this.api);
+        this.temperature_chart = new TemperatureChartWidget(this.api, this.ws);
 
         /**
          * Battery charge widget.
@@ -46,7 +54,7 @@ export default class Widgets {
          * @member Widgets#battery_charge
          * @type {BatteryChargeWidget}
          */
-        this.battery_charge = new BatteryChargeWidget(this.api);
+        this.battery_charge = new BatteryChargeWidget(this.api, this.ws);
 
         /**
          * Battery charge chart widget.
@@ -54,7 +62,7 @@ export default class Widgets {
          * @member Widgets#battery_charge_chart
          * @type {BatteryChargeChartWidget}
          */
-        this.battery_charge_chart = new BatteryChargeChartWidget(this.api);
+        this.battery_charge_chart = new BatteryChargeChartWidget(this.api, this.ws);
 
         /**
          * Battery voltage widget.
@@ -62,7 +70,7 @@ export default class Widgets {
          * @member Widgets#battery_voltage
          * @type {BatteryVoltageWidget}
          */
-        this.battery_voltage = new BatteryVoltageWidget(this.api);
+        this.battery_voltage = new BatteryVoltageWidget(this.api, this.ws);
 
         /**
          * Battery voltagew chart widget.
@@ -70,7 +78,7 @@ export default class Widgets {
          * @member Widgets#battery_voltage_chart
          * @type {BatteryVoltageChartWidget}
          */
-        this.battery_voltage_chart = new BatteryVoltageChartWidget(this.api);
+        this.battery_voltage_chart = new BatteryVoltageChartWidget(this.api, this.ws);
 
         /**
          * Map widgets.
@@ -78,6 +86,6 @@ export default class Widgets {
          * @member Widgets#map
          * @type {MapWidget}
          */
-        this.map = new MapWidget(this.api);
+        this.map = new MapWidget(this.api, this.ws);
     }
 }
