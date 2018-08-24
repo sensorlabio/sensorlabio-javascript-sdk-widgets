@@ -46,6 +46,7 @@ export default class BatteryChargeWidgetComponent extends Component {
     }
 
     getMeasurements(measurements) {
+        console.log(measurements);
         let measurement = measurements[0];
         this.setState({'charge': measurement.value[0]});
     }
