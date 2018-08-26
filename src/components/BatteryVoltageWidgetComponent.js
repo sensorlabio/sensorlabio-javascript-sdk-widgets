@@ -11,8 +11,11 @@ export default class BatteryVoltageWidgetComponent extends Component {
             voltage: 12,
         };
 
-        this.timer = null;
+        this.ws = this.props.ws;
+        //this.timer = null;
         this.is_live = false;
+
+        this.getMeasurements = this.getMeasurements.bind(this);
     }
 
     componentWillMount() {
@@ -25,7 +28,12 @@ export default class BatteryVoltageWidgetComponent extends Component {
 
     startWidget() {
         this.is_live = true;
+        this.ws.onMeasurementsType('BAT', this.getMeasurements);
         this.updateWidget();
+    }
+
+    getMeasurements(measurement) {
+        this.setState({'voltage': measurement.value[0]});
     }
 
     updateWidget() {
@@ -36,17 +44,21 @@ export default class BatteryVoltageWidgetComponent extends Component {
         this.api.measurements.last(params).then((measurement) => {
             if (!this.is_live) return;
             this.setState({'voltage': measurement.value[0]});
+            /*
             this.timer = setTimeout(() => {
                 this.updateWidget()
             }, 1000);
+            */
         });
     }
 
     stopWidget() {
         this.is_live = false;
+        /*
         if (this.timer) {
             clearTimeout(this.timer);
         }
+        */
     }
 
     getGaugeData() {
