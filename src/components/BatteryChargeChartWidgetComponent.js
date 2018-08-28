@@ -13,10 +13,13 @@ export default class BatteryChargeChartWidgetComponent extends Component {
             charge_data: [],
         }
 
-        this.timer = null;
+        this.ws = this.props.ws;
+        //this.timer = null;
         this.is_live = false;
+        this.max_alerts = 50;
 
         this._onMouseLeave = this._onMouseLeave.bind(this);
+        this.getMeasurements = this.getMeasurements.bind(this);
     }
 
     componentWillMount() {
@@ -29,7 +32,20 @@ export default class BatteryChargeChartWidgetComponent extends Component {
 
     startWidget() {
         this.is_live = true;
+        this.ws.onMeasurementsType('CHRG', this.getMeasurements);
         this.updateWidget();
+    }
+
+    getMeasurements(measurement) {
+        this.setState((prevState) => {
+            let charge_data = prevState.objects.slice();
+            let new_charge_data = this.prepareData([measurement]);
+            charge_data = charge_data.concat(new_charge_data);
+            if (charge_data.length > this.max_objects) {
+                charge_data.splice(this.max_objects - charge_data.length, this.max_alerts);
+            }
+            return {'charge_data': charge_data};
+        });
     }
 
     updateWidget() {
@@ -40,17 +56,21 @@ export default class BatteryChargeChartWidgetComponent extends Component {
         this.api.measurements.list(params).then((measurements_response) => {
             if (!this.is_live) return;
             this.setState({'charge_data': this.prepareData(measurements_response.measurements)})
+            /*
             this.timer = setTimeout(() => {
                 this.updateWidget()
             }, 1000);
+            */
         });
     }
 
     stopWidget() {
         this.is_live = false;
+        /*
         if (this.timer) {
             clearTimeout(this.timer);
         }
+        */
     }
 
     prepareData(measurements) {

@@ -39,9 +39,7 @@ export default class BatteryChargeWidgetComponent extends Component {
 
     startWidget() {
         this.is_live = true;
-
         this.ws.onMeasurementsType('CHRG', this.getMeasurements);
-
         this.updateWidget();
     }
 
