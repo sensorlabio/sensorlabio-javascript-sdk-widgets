@@ -10,10 +10,11 @@ export default class BatteryVoltageChartWidgetComponent extends Component {
 
         this.state = {
             crosshairValues: [{x: 0, y: 0}],
-            charge_data: [],
+            voltage_data: [],
         }
 
-        this.timer = null;
+        this.ws = this.props.ws;
+        //this.timer = null;
         this.is_live = false;
 
         this._onMouseLeave = this._onMouseLeave.bind(this);
@@ -29,7 +30,20 @@ export default class BatteryVoltageChartWidgetComponent extends Component {
 
     startWidget() {
         this.is_live = true;
+        this.ws.onMeasurementsType('BAT', this.getMeasurements);
         this.updateWidget();
+    }
+
+    getMeasurements(measurement) {
+        this.setState((prevState) => {
+            let voltage_data = prevState.voltage_data.slice();
+            let new_voltage_data = this.prepareData([measurement]);
+            voltage_data = voltage_data.concat(new_voltage_data);
+            if (voltage_data.length > this.max_objects) {
+                voltage_data.splice(this.max_objects - voltage_data.length, this.max_alerts);
+            }
+            return {'voltage_data': voltage_data};
+        });
     }
 
     updateWidget() {
@@ -39,10 +53,12 @@ export default class BatteryVoltageChartWidgetComponent extends Component {
         }
         this.api.measurements.list(params).then((measurements_response) => {
             if (!this.is_live) return;
-            this.setState({'charge_data': this.prepareData(measurements_response.measurements)})
+            this.setState({'voltage_data': this.prepareData(measurements_response.measurements)})
+            /*
             this.timer = setTimeout(() => {
                 this.updateWidget()
             }, 1000);
+            */
         });
     }
 
@@ -92,7 +108,7 @@ export default class BatteryVoltageChartWidgetComponent extends Component {
                 <VerticalGridLines />
                 <HorizontalGridLines />
                 <LineSeries
-                    data={this.state.charge_data}
+                    data={this.state.voltage_data}
                     onNearestX ={(value) => this._onNearestX(value) }
                 />
                 <XAxis />
