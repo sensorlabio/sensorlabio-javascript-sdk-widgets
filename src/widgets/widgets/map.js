@@ -9,9 +9,11 @@ export default class MapWidget {
     /**
      * @constructor MapWidget
      * @param api SensorlabApi
+     * @param ws SensorlabWebsocket
      */
-    constructor(api) {
+    constructor(api, ws) {
         this.api = api;
+        this.ws = ws;
     }
 
     /**
@@ -22,6 +24,6 @@ export default class MapWidget {
      * @param sensor_id string Sensor ID
      */
     render(container_id, sensor_id) {
-        ReactDOM.render(<MapWidgetComponent api={this.api} sensor_id={sensor_id} />, document.getElementById(container_id));
+        ReactDOM.render(<MapWidgetComponent api={this.api} ws={this.ws} sensor_id={sensor_id} />, document.getElementById(container_id));
     }
 }

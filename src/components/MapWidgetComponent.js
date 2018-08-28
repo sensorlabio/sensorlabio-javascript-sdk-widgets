@@ -35,8 +35,11 @@ export default class MapWidgetComponent extends Component {
             is_live: false,
         };
 
-        this.timer = null;
+        this.ws = this.props.ws;
+        //this.timer = null;
         this.is_live = false;
+        this.max_objects = 20;
+        this.getMeasurements = this.getMeasurements.bind(this);
     }
 
     componentWillMount() {
@@ -49,7 +52,20 @@ export default class MapWidgetComponent extends Component {
 
     startWidget() {
         this.is_live = true;
+        this.ws.onMeasurementsType('LOC', this.getMeasurements);
         this.updateWidget();
+    }
+
+    getMeasurements(measurement) {
+        this.setState((prevState) => {
+            let _new_location_history = prevState.location_history.slice();
+            _new_location_history.push({lat: measurement.value[0], lng: measurement.value[1]});
+            if (_new_location_history.length > this.max_objects) {
+                _new_location_history.shift();
+            }
+            let newState = {location: measurement.value, location_history: _new_location_history};
+            return newState;
+        });
     }
 
     updateWidget() {
@@ -58,15 +74,7 @@ export default class MapWidgetComponent extends Component {
             type: 'LOC',
         };
         this.api.measurements.last(params).then((measurement) => {
-            this.setState((prevState) => {
-                let _new_location_history = prevState.location_history.slice();
-                _new_location_history.push({lat: measurement.value[0], lng: measurement.value[1]});
-                if (_new_location_history.length > 20) {
-                    _new_location_history.shift();
-                }
-                let newState = {location: measurement.value, location_history: _new_location_history};
-                return newState;
-            });
+            this.getMeasurements(measurement);
         });
     }
 
