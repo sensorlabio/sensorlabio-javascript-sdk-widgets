@@ -66,9 +66,11 @@ export default class BatteryVoltageChartWidgetComponent extends Component {
 
     stopWidget() {
         this.is_live = false;
+        /*
         if (this.timer) {
             clearTimeout(this.timer);
         }
+        */
     }
 
     prepareData(measurements) {
