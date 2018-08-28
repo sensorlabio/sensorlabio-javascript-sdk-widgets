@@ -16,7 +16,7 @@ export default class BatteryChargeChartWidgetComponent extends Component {
         this.ws = this.props.ws;
         //this.timer = null;
         this.is_live = false;
-        this.max_alerts = 50;
+        this.max_objects = 50;
 
         this._onMouseLeave = this._onMouseLeave.bind(this);
         this.getMeasurements = this.getMeasurements.bind(this);
@@ -38,12 +38,14 @@ export default class BatteryChargeChartWidgetComponent extends Component {
 
     getMeasurements(measurement) {
         this.setState((prevState) => {
-            let charge_data = prevState.objects.slice();
+            console.log(new Date());
+            let charge_data = prevState.charge_data.slice();
             let new_charge_data = this.prepareData([measurement]);
             charge_data = charge_data.concat(new_charge_data);
             if (charge_data.length > this.max_objects) {
                 charge_data.splice(this.max_objects - charge_data.length, this.max_alerts);
             }
+            console.log(new Date());
             return {'charge_data': charge_data};
         });
     }
