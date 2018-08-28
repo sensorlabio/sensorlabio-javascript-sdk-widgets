@@ -16,6 +16,7 @@ export default class BatteryVoltageChartWidgetComponent extends Component {
         this.ws = this.props.ws;
         //this.timer = null;
         this.is_live = false;
+        this.max_objects = 50;
 
         this._onMouseLeave = this._onMouseLeave.bind(this);
     }
