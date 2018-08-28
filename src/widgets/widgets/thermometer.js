@@ -11,9 +11,11 @@ export default class ThermometerWidget {
     /**
      * @constructor ThermometerWidget
      * @param api SensorlabApi
+     * @param ws SensorlabWebsocket
      */
-    constructor(api) {
+    constructor(api, ws) {
         this.api = api;
+        this.ws = ws;
     }
 
     /**
@@ -24,6 +26,6 @@ export default class ThermometerWidget {
      * @param sensor_id string Sensor ID
      */
     render(container_id, sensor_id, is_public = false, public_api_key = null) {
-        ReactDOM.render(<ThermometerWidgetComponent api={this.api} sensor_id={sensor_id} is_public={is_public} public_api_key={public_api_key} />, document.getElementById(container_id));
+        ReactDOM.render(<ThermometerWidgetComponent api={this.api} ws={this.ws} sensor_id={sensor_id} is_public={is_public} public_api_key={public_api_key} />, document.getElementById(container_id));
     }
 }

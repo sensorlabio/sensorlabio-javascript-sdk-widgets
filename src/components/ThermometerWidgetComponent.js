@@ -13,8 +13,11 @@ export default class ThermometerWidgetComponent extends Component {
             temperature: 0,
         }
 
-        this.timer = null;
+        this.ws = this.props.ws;
+        //this.timer = null;
         this.is_live = false;
+
+        this.getMeasurements = this.getMeasurements.bind(this);
     }
 
     componentWillMount() {
@@ -27,7 +30,12 @@ export default class ThermometerWidgetComponent extends Component {
 
     startWidget() {
         this.is_live = true;
+        this.ws.onMeasurementsType('TMP', this.getMeasurements);
         this.updateWidget();
+    }
+
+    getMeasurements(measurement) {
+        this.setState({'temperature': measurement.value[0]});
     }
 
     updateWidget() {
@@ -39,26 +47,32 @@ export default class ThermometerWidgetComponent extends Component {
             this.promise = this.api.public.last(this.props.public_api_key, params).then((measurement) => {
                 if (!this.is_live) return;
                 this.setState({'temperature': measurement.value});
+                /*
                 this.timer = setTimeout(() => {
                     this.updateWidget();
                 }, 1000);
+                */
             });
         } else {
             this.promise = this.api.measurements.last(params).then((measurement) => {
                 if (!this.is_live) return;
                 this.setState({'temperature': measurement.value});
+                /*
                 this.timer = setTimeout(() => {
                     this.updateWidget();
                 }, 1000);
+                */
             });
         }
     }
 
     stopWidget() {
         this.is_live = false;
+        /*
         if (this.timer) {
             clearTimeout(this.timer);
         }
+        */
     }
 
     render() {
