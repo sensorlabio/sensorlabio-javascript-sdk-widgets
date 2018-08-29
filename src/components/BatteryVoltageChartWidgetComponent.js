@@ -41,7 +41,7 @@ export default class BatteryVoltageChartWidgetComponent extends Component {
             let new_voltage_data = this.prepareData([measurement]);
             voltage_data = voltage_data.concat(new_voltage_data);
             if (voltage_data.length > this.max_objects) {
-                voltage_data.splice(this.max_objects - voltage_data.length, this.max_alerts);
+                voltage_data.splice(this.max_objects - voltage_data.length, this.max_objects);
             }
             return {'voltage_data': voltage_data};
         });
