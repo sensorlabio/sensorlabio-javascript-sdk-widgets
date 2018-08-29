@@ -1,6 +1,6 @@
 {
   "name": "sensorlabio-javascript-sdk-widgets",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Default sensor widgets for Sensorlab.io Javascript SDK",
   "main": "build/index.min.js",
   "scripts": {
