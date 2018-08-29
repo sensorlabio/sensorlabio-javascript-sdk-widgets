@@ -39,7 +39,7 @@ export default class TemperatureChartWidgetComponent extends Component {
         this.setState((prevState) => {
             let temperature_data = prevState.temperature_data.slice();
             let new_temperature_data = this.prepareData([measurement]);
-            temperature_data = temperature_data.concat(new_temperature_data);
+            temperature_data = new_temperature_data.concat(temperature_data);
             if (temperature_data.length > this.max_objects) {
                 temperature_data.splice(this.max_objects - temperature_data.length, this.max_objects);
             }

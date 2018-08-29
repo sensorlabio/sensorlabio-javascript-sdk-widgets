@@ -39,7 +39,7 @@ export default class BatteryChargeChartWidgetComponent extends Component {
         this.setState((prevState) => {
             let charge_data = prevState.charge_data.slice();
             let new_charge_data = this.prepareData([measurement]);
-            charge_data = charge_data.concat(new_charge_data);
+            charge_data = new_charge_data.concat(charge_data);
             if (charge_data.length > this.max_objects) {
                 charge_data.splice(this.max_objects - charge_data.length, this.max_objects);
             }
