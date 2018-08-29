@@ -52,7 +52,6 @@ export default class MapWidgetComponent extends Component {
 
     startWidget() {
         this.is_live = true;
-        this.ws.onMeasurementsType('LOC', this.getMeasurements);
         this.updateWidget();
     }
 
@@ -75,6 +74,7 @@ export default class MapWidgetComponent extends Component {
         };
         this.api.measurements.last(params).then((measurement) => {
             this.getMeasurements(measurement);
+            this.ws.onMeasurementsType('LOC', this.getMeasurements);
         });
     }
 

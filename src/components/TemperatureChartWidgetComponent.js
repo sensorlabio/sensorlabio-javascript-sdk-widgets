@@ -32,7 +32,6 @@ export default class TemperatureChartWidgetComponent extends Component {
 
     startWidget() {
         this.is_live = true;
-        this.ws.onMeasurementsType('TMP', this.getMeasurements);
         this.updateWidget();
     }
 
@@ -42,7 +41,7 @@ export default class TemperatureChartWidgetComponent extends Component {
             let new_temperature_data = this.prepareData([measurement]);
             temperature_data = temperature_data.concat(new_temperature_data);
             if (temperature_data.length > this.max_objects) {
-                temperature_data.splice(this.max_objects - temperature_data.length, this.max_alerts);
+                temperature_data.splice(this.max_objects - temperature_data.length, this.max_objects);
             }
             return {'temperature_data': temperature_data};
         });
@@ -55,7 +54,9 @@ export default class TemperatureChartWidgetComponent extends Component {
         }
         this.api.measurements.list(params).then((measurements_response) => {
             if (!this.is_live) return;
-            this.setState({'temperature_data': this.prepareData(measurements_response.measurements)})
+            this.setState({'temperature_data': this.prepareData(measurements_response.measurements)}, () => {
+                this.ws.onMeasurementsType('TMP', this.getMeasurements);
+            })
             /*
             this.timer = setTimeout(() => {
                 this.updateWidget()

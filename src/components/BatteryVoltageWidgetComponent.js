@@ -28,7 +28,6 @@ export default class BatteryVoltageWidgetComponent extends Component {
 
     startWidget() {
         this.is_live = true;
-        this.ws.onMeasurementsType('BAT', this.getMeasurements);
         this.updateWidget();
     }
 
@@ -43,7 +42,9 @@ export default class BatteryVoltageWidgetComponent extends Component {
         }
         this.api.measurements.last(params).then((measurement) => {
             if (!this.is_live) return;
-            this.setState({'voltage': measurement.value[0]});
+            this.setState({'voltage': measurement.value[0]}, () => {
+                this.ws.onMeasurementsType('BAT', this.getMeasurements);
+            });
             /*
             this.timer = setTimeout(() => {
                 this.updateWidget()
