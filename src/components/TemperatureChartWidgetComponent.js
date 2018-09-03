@@ -112,7 +112,7 @@ export default class TemperatureChartWidgetComponent extends Component {
                 height={300}
                 yDomain={[-200, 200]}
                 yBaseValue={0}
-                xType="time"
+                xType="time-utc"
                 xRange={this._getXRange()}
                 onMouseLeave={this._onMouseLeave}
             >
