@@ -100,9 +100,9 @@ export default class TemperatureChartWidgetComponent extends Component {
     }
 
     _getXRange() {
-        let _x_range_min = new Date().getTime() - 50 * 1000;
-        console.log(_x_range_min);
-        return {min: _x_range_min};
+        let _x_range_max = new Date().getTime();
+        let _x_range_min = _x_range_max - 50 * 1000;
+        return [_x_range_min, _x_range_max];
     }
 
     render() {
