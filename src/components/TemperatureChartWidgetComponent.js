@@ -99,6 +99,12 @@ export default class TemperatureChartWidgetComponent extends Component {
         this.setState({crosshairValues: []});
     }
 
+    _getXRange() {
+        let _x_range_min = new Date().getTime() - 50 * 1000;
+        console.log(_x_range_min);
+        return {min: _x_range_min};
+    }
+
     render() {
         return (
             <XYPlot
@@ -107,6 +113,7 @@ export default class TemperatureChartWidgetComponent extends Component {
                 yDomain={[-200, 200]}
                 yBaseValue={0}
                 xType="time"
+                xRange={this._getXRange()}
                 onMouseLeave={this._onMouseLeave}
             >
                 <GradientDefs>
