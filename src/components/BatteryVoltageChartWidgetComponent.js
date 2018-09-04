@@ -103,7 +103,7 @@ export default class BatteryVoltageChartWidgetComponent extends Component {
         if (!this.state.voltage_data.length) {
             return [];
         }
-        let _last_measurement = this.state.temperature_data[0];
+        let _last_measurement = this.state.voltage_data[0];
         let _x_range_max = _last_measurement.x;
         let _x_range_min = _x_range_max - 50 * 1000;
         return [_x_range_min, _x_range_max];
