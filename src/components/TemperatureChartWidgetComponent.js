@@ -11,6 +11,7 @@ export default class TemperatureChartWidgetComponent extends Component {
         this.state = {
             crosshairValues: [{x: 0, y: 0}],
             temperatureHintValue: null,
+            temperature_data: [],
         }
 
         this.ws = this.props.ws;
@@ -52,17 +53,26 @@ export default class TemperatureChartWidgetComponent extends Component {
             sensor: this.props.sensor_id,
             type: 'TMP',
         }
-        this.api.measurements.list(params).then((measurements_response) => {
-            if (!this.is_live) return;
-            this.setState({'temperature_data': this.prepareData(measurements_response.measurements)}, () => {
-                this.ws.onMeasurementsType('TMP', this.getMeasurements);
-            })
-            /*
-            this.timer = setTimeout(() => {
-                this.updateWidget()
-            }, 1000);
-            */
-        });
+        if (this.props.is_public) {
+            this.api.public.list(this.props.public_api_key, params).then((measurements_response) => {
+                if (!this.is_live) return;
+                this.setState({'temperature_data': this.prepareData(measurements_response.measurements)}, () => {
+                    //this.ws.onMeasurements('TMP', this.getMeasurements);
+                })
+            });
+        } else {
+            this.api.measurements.list(params).then((measurements_response) => {
+                if (!this.is_live) return;
+                this.setState({'temperature_data': this.prepareData(measurements_response.measurements)}, () => {
+                    this.ws.onMeasurements('TMP', this.getMeasurements);
+                })
+                /*
+                this.timer = setTimeout(() => {
+                    this.updateWidget()
+                }, 1000);
+                */
+            });
+        }
     }
 
     stopWidget() {
@@ -88,7 +98,7 @@ export default class TemperatureChartWidgetComponent extends Component {
 
     _getCrosshairTitle(d) {
         let _value = new Date(d[0].x).getHours() + ':' + new Date(d[0].x).getMinutes() + ':' + new Date(d[0].x).getSeconds();
-        return {title: 'Time', value: _value}
+        return {title: 'Time', value: _value};
     }
 
     _getCrosshairItems(d) {
@@ -100,9 +110,12 @@ export default class TemperatureChartWidgetComponent extends Component {
     }
 
     _getXRange() {
-        let _x_range_max = new Date().getTime();
+        if (!this.state.temperature_data.length) {
+            return [];
+        }
+        let _last_measurement = this.state.temperature_data[0];
+        let _x_range_max = _last_measurement.x;
         let _x_range_min = _x_range_max - 50 * 1000;
-        console.log(_x_range_min, _x_range_max);
         return [_x_range_min, _x_range_max];
     }
 
@@ -114,6 +127,7 @@ export default class TemperatureChartWidgetComponent extends Component {
                 yDomain={[-200, 200]}
                 yBaseValue={0}
                 xType="time"
+                xDomain={this._getXRange()}
                 onMouseLeave={this._onMouseLeave}
             >
                 <GradientDefs>
