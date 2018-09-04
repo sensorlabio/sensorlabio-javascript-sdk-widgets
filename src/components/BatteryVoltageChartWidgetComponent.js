@@ -99,6 +99,16 @@ export default class BatteryVoltageChartWidgetComponent extends Component {
         this.setState({crosshairValues: []});
     }
 
+    _getXRange() {
+        if (!this.state.temperature_data.length) {
+            return [];
+        }
+        let _last_measurement = this.state.temperature_data[0];
+        let _x_range_max = _last_measurement.x;
+        let _x_range_min = _x_range_max - 50 * 1000;
+        return [_x_range_min, _x_range_max];
+    }
+
     render() {
         return (
             <XYPlot
@@ -107,6 +117,7 @@ export default class BatteryVoltageChartWidgetComponent extends Component {
                 yDomain={[8, 17]}
                 yBaseValue={8}
                 xType="time"
+                xDomain={this._getXRange()}
                 onMouseLeave={this._onMouseLeave}
             >
 
