@@ -100,7 +100,7 @@ export default class BatteryChargeChartWidgetComponent extends Component {
     }
 
     _getXRange() {
-        if (!this.state.temperature_data.length) {
+        if (!this.state.charge_data.length) {
             return [];
         }
         let _last_measurement = this.state.temperature_data[0];
