@@ -64,24 +64,15 @@ export default class TemperatureChartWidgetComponent extends Component {
             this.api.measurements.list(params).then((measurements_response) => {
                 if (!this.is_live) return;
                 this.setState({'temperature_data': this.prepareData(measurements_response.measurements)}, () => {
-                    this.ws.onMeasurements('TMP', this.getMeasurements);
-                })
-                /*
-                this.timer = setTimeout(() => {
-                    this.updateWidget()
-                }, 1000);
-                */
+                    this.ws.setSensor(this.props.sensor_id, 'TMP');
+                    this.ws.onMeasurements(this.getMeasurements);
+                });
             });
         }
     }
 
     stopWidget() {
         this.is_live = false;
-        /*
-        if (this.timer) {
-            clearTimeout(this.timer);
-        }
-        */
     }
 
     prepareData(measurements) {

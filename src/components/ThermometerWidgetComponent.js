@@ -48,34 +48,20 @@ export default class ThermometerWidgetComponent extends Component {
                 this.setState({'temperature': measurement.value}, () => {
                     this.ws.onMeasurementsType('TMP', this.getMeasurements);
                 });
-                /*
-                this.timer = setTimeout(() => {
-                    this.updateWidget();
-                }, 1000);
-                */
             });
         } else {
             this.promise = this.api.measurements.last(params).then((measurement) => {
                 if (!this.is_live) return;
                 this.setState({'temperature': measurement.value}, () => {
-                    this.ws.onMeasurementsType('TMP', this.getMeasurements);
+                    this.ws.setSensor(this.props.sensor_id, 'TMP');
+                    this.ws.onMeasurements(this.getMeasurements);
                 });
-                /*
-                this.timer = setTimeout(() => {
-                    this.updateWidget();
-                }, 1000);
-                */
             });
         }
     }
 
     stopWidget() {
         this.is_live = false;
-        /*
-        if (this.timer) {
-            clearTimeout(this.timer);
-        }
-        */
     }
 
     render() {
