@@ -33,8 +33,8 @@ export default class ThermometerWidgetComponent extends Component {
         this.updateWidget();
     }
 
-    getMeasurements(measurement) {
-        this.setState({'temperature': measurement.value[0]});
+    getMeasurements(measurements) {
+        this.setState({'temperature': measurements[0].value[0]});
     }
 
     updateWidget() {

@@ -31,7 +31,8 @@ export default class BatteryVoltageWidgetComponent extends Component {
         this.updateWidget();
     }
 
-    getMeasurements(measurement) {
+    getMeasurements(measurements) {
+        let measurement = measurements[0];
         this.setState({'voltage': measurement.value[0]});
     }
 

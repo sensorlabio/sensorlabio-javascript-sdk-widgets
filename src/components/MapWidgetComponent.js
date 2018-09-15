@@ -55,7 +55,8 @@ export default class MapWidgetComponent extends Component {
         this.updateWidget();
     }
 
-    getMeasurements(measurement) {
+    getMeasurements(measurements) {
+        let measurement = measurements[0];
         this.setState((prevState) => {
             let _new_location_history = prevState.location_history.slice();
             _new_location_history.push({lat: measurement.value[0], lng: measurement.value[1]});
