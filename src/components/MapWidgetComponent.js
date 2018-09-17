@@ -56,7 +56,6 @@ export default class MapWidgetComponent extends Component {
     }
 
     getMeasurements(measurements) {
-        console.log(measurements);
         let measurement = measurements[0];
         this.setState((prevState) => {
             let _new_location_history = prevState.location_history.slice();
@@ -75,7 +74,7 @@ export default class MapWidgetComponent extends Component {
             type: 'LOC',
         };
         this.api.measurements.last(params).then((measurement) => {
-            this.getMeasurements(measurement);
+            this.getMeasurements([measurement]);
             this.ws.setSensor(this.props.sensor_id, 'LOC');
             this.ws.onMeasurements(this.getMeasurements, 'LOC');
         });
