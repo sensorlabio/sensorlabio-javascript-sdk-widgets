@@ -37,7 +37,6 @@ export default class TemperatureChartWidgetComponent extends Component {
     }
 
     getMeasurements(measurements) {
-        console.log(measurements);
         this.setState((prevState) => {
             let temperature_data = prevState.temperature_data.slice();
             let new_temperature_data = this.prepareData(measurements);
@@ -79,7 +78,6 @@ export default class TemperatureChartWidgetComponent extends Component {
     prepareData(measurements) {
         let data = [];
         measurements.forEach((measurement, i) => {
-            console.log(measurement);
             data.push({x: measurement.timestamp, y: measurement.value[0]});
         });
         return data;
@@ -90,13 +88,11 @@ export default class TemperatureChartWidgetComponent extends Component {
     }
 
     _getCrosshairTitle(d) {
-        console.log('date', d);
         let _value = new Date(d[0].x).getHours() + ':' + new Date(d[0].x).getMinutes() + ':' + new Date(d[0].x).getSeconds();
         return {title: 'Time', value: _value};
     }
 
     _getCrosshairItems(d) {
-        console.log('temp', d);
         return [{title: 'Temperature', value: d[0].y + '°C'}]
     }
 
