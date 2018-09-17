@@ -56,7 +56,7 @@ export default class BatteryVoltageChartWidgetComponent extends Component {
             if (!this.is_live) return;
             this.setState({'voltage_data': this.prepareData(measurements_response.measurements)}, () => {
                 this.ws.setSensor(this.props.sensor_id, 'BAT');
-                this.ws.onMeasurementsType(this.getMeasurements, 'BAT');
+                this.ws.onMeasurements(this.getMeasurements, 'BAT');
             })
         });
     }

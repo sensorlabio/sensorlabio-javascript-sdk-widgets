@@ -54,7 +54,7 @@ export default class ThermometerWidgetComponent extends Component {
                 if (!this.is_live) return;
                 this.setState({'temperature': measurement.value}, () => {
                     this.ws.setSensor(this.props.sensor_id, 'TMP');
-                    this.ws.onMeasurementsType(this.getMeasurements, 'TMP');
+                    this.ws.onMeasurements(this.getMeasurements, 'TMP');
                 });
             });
         }
