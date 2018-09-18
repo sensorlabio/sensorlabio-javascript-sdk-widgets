@@ -76,7 +76,7 @@ export default class MapWidgetComponent extends Component {
         this.api.measurements.last(params).then((measurement) => {
             this.getMeasurements([measurement]);
             this.ws.joinSensor(this.props.sensor_id, 'LOC');
-            this.ws.onMeasurements(this.getMeasurements, 'LOC');
+            this.ws.onMeasurements(this.props.sensor_id, 'LOC', this.getMeasurements);
         });
     }
 

@@ -56,7 +56,7 @@ export default class BatteryChargeWidgetComponent extends Component {
             if (!this.is_live) return;
             this.setState({'charge': measurement.value}, () => {
                 this.ws.joinSensor(this.props.sensor_id, 'CHRG');
-                this.ws.onMeasurements(this.getMeasurements, 'CHRG');
+                this.ws.onMeasurements(this.props.sensor_id, 'CHRG', this.getMeasurements);
             });
         });
     }

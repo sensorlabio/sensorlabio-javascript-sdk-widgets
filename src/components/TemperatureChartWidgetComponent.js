@@ -65,7 +65,7 @@ export default class TemperatureChartWidgetComponent extends Component {
                 if (!this.is_live) return;
                 this.setState({'temperature_data': this.prepareData(measurements_response.measurements)}, () => {
                     this.ws.joinSensor(this.props.sensor_id, 'TMP');
-                    this.ws.onMeasurements(this.getMeasurements, 'TMP');
+                    this.ws.onMeasurements(this.props.sensor_id, 'TMP', this.getMeasurements);
                 });
             });
         }
