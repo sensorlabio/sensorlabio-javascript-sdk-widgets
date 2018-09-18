@@ -44,7 +44,7 @@ export default class BatteryVoltageWidgetComponent extends Component {
         this.api.measurements.last(params).then((measurement) => {
             if (!this.is_live) return;
             this.setState({'voltage': measurement.value[0]}, () => {
-                this.ws.setSensor(this.props.sensor_id, 'BAT');
+                this.ws.joinSensor(this.props.sensor_id, 'BAT');
                 this.ws.onMeasurements(this.getMeasurements, 'BAT');
             });
         });

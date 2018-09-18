@@ -55,7 +55,7 @@ export default class BatteryChargeChartWidgetComponent extends Component {
         this.api.measurements.list(params).then((measurements_response) => {
             if (!this.is_live) return;
             this.setState({'charge_data': this.prepareData(measurements_response.measurements)}, () => {
-                this.ws.setSensor(this.props.sensor_id, 'CHRG');
+                this.ws.joinSensor(this.props.sensor_id, 'CHRG');
                 this.ws.onMeasurements(this.getMeasurements, 'CHRG');
             });
         });
